@@ -1,6 +1,7 @@
 import React from 'react';
 import Starter from '../Slider/Starter';
 import Slider from '../Slider/Slider';
+import Extra from '../Extra/Extra';
 
 const Home = () => {
     return (
@@ -9,6 +10,7 @@ const Home = () => {
                 <Starter></Starter>
                 <Slider></Slider>
             </div>
+            <Extra></Extra>
         </div>
     );
 };
