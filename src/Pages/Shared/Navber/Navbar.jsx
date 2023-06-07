@@ -13,7 +13,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-neutral-500 max-w-screen-xl fixed z-10 bg-opacity-30">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -23,7 +23,7 @@ const Navbar = () => {
                         {navMenu}
                         </ul>
                     </div>
-                    <img className='w-2/12' src="https://i.ibb.co/sQ40KKv/melody.png" alt="" />
+                    <img className='w-2/12 rounded-full' src="https://i.ibb.co/sQ40KKv/melody.png" alt="" />
                     <a className="btn btn-ghost normal-case font-extrabold text-3xl">Melody Minds</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">

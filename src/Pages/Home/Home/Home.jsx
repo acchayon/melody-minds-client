@@ -1,9 +1,14 @@
 import React from 'react';
+import Starter from '../Slider/Starter';
+import Slider from '../Slider/Slider';
 
 const Home = () => {
     return (
         <div>
-            <h2>This is Home</h2>
+            <div className='grid pt-40 grid-cols-1 md:grid-cols-2 items-center'>
+                <Starter></Starter>
+                <Slider></Slider>
+            </div>
         </div>
     );
 };
