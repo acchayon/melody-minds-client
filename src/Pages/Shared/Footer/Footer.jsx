@@ -5,7 +5,7 @@ const Footer = () => {
         <div className='h-[100px]'>
             <footer className="footer footer-center p-10 bg-slate-700 text-primary-content">
                 <div>
-                   <img className='w-2/5'  src="https://i.ibb.co/sQ40KKv/melody.png" alt="" />
+                   <img className='w-2/5 rounded-full'  src="https://i.ibb.co/sQ40KKv/melody.png" alt="" />
                     <p className="font-bold">
                         Melody Minds <br />Providing reliable Music since 2000
                     </p>
