@@ -2,13 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc'
 
-const Login = () => {
+
+const Register = () => {
     return (
         <div className='w-3/5 mx-auto'>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col bg-base-100 bg-opacity-100">
                     <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Login now!</h1>
+                        <h1 className="text-5xl font-bold">SignUp now!</h1>
                     </div>
                     <form
                         className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -26,13 +27,14 @@ const Login = () => {
                                 <input type="text" placeholder="password" className="input input-bordered" />
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn btn-primary" type="submit" value="Login" />
+                                <button className="btn btn-primary">Submit</button>
+                                <input type="submit" value="Register" />
                             </div>
-                            <p>New to this school? <span className='text-red-500'><Link to='/register'>Go to SignUp</Link></span></p>
+                            <p>Already have an account? <span className='text-red-500'><Link to='/login'>Go to login</Link></span></p>
                         </div>
                     </form>
                     <div className='flex items-center'>
-                        <p><small>Continue with</small></p>
+                        <p>Continue with</p>
                         <button><FcGoogle size={40}></FcGoogle></button>
                     </div>
                 </div>
@@ -41,4 +43,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
