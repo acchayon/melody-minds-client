@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import {BsPersonCircle } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Provider/AuthProvider';
 
 
 const Navbar = () => {
+    const {user, logOut} = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+        .then(data => console.log(data))
+        .catch(err => console.log(err))
+    }
+
     const navMenu = <>
         <li><a>Home</a></li>
         <li><a>Instructor</a></li>
@@ -34,7 +43,11 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end ">
+                    {user ? <>
+                        <button className="btn btn-active btn-neutral">LogOut</button>
+                    </> : <>
                     <Link to='/login' className="btn btn-active mr-4 btn-sm btn-neutral">Login <FaArrowRight></FaArrowRight> </Link>
+                    </>}
                     <div className="avatar">
                         <div className="w-16 rounded">
                             <BsPersonCircle className='mt-3' size={40}></BsPersonCircle>
