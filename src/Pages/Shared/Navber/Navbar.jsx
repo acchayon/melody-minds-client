@@ -15,10 +15,10 @@ const Navbar = () => {
     }
 
     const navMenu = <>
-        <li><a>Home</a></li>
-        <li><a>Instructor</a></li>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/instructor'>Instructor</Link></li>
         <li><a>Classes</a></li>
-        <li><a>DashBoard</a></li>
+        <li><Link to='/dashboard'>DashBoard</Link></li>
 
     </>
 
@@ -44,7 +44,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end ">
                     {user ? <>
-                        <button className="btn btn-active btn-neutral">LogOut</button>
+                        <button onClick={handleLogOut} className="btn btn-sm btn-active btn-neutral">LogOut</button>
                     </> : <>
                     <Link to='/login' className="btn btn-active mr-4 btn-sm btn-neutral">Login <FaArrowRight></FaArrowRight> </Link>
                     </>}

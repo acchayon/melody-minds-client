@@ -2,6 +2,7 @@ import React from 'react';
 import Starter from '../Slider/Starter';
 import Slider from '../Slider/Slider';
 import Extra from '../Extra/Extra';
+import PopularClass from '../PopularClass/PopularClass';
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
                 <Slider></Slider>
             </div>
             <Extra></Extra>
+            <PopularClass></PopularClass>
         </div>
     );
 };

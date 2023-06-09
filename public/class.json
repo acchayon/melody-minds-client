@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "image": "https://i.ibb.co/QjVmxQT/ms1.jpg",
+        "name": "Guitar Basics",
+        "instructor": "John Smith",
+        "available_seats": 10,
+        "price": 20
+    },
+    {
+        "id": 2,
+        "image": "https://i.ibb.co/54ryp50/ms2.jpg",
+        "name": "Piano for Beginners",
+        "instructor": "Jane Doe",
+        "available_seats": 5,
+        "price": 15
+    },
+    {
+        "id": 3,
+        "image": "https://i.ibb.co/Nx1t49n/ms3.jpg",
+        "name": "Drumming Fundamentals",
+        "instructor": "David Johnson",
+        "available_seats": 8,
+        "price": 12
+    },
+    {
+        "id": 4,
+        "image": "https://i.ibb.co/d5b2gzS/ms4.jpg",
+        "name": "Singing Workshop",
+        "instructor": "Emily Brown",
+        "available_seats": 12,
+        "price": 18
+    },
+    {
+        "id": 5,
+        "image": "https://i.ibb.co/tqMMmwP/ms5.jpg",
+        "name": "Bass Guitar Techniques",
+        "instructor": "Michael Wilson",
+        "available_seats": 15,
+        "price": 22
+    },
+    {
+        "id": 6,
+        "image": "https://i.ibb.co/fMwNkqj/ms6.jpg",
+        "name": "Violin Mastery",
+        "instructor": "Sarah Thompson",
+        "available_seats": 3,
+        "price": 25
+    },
+    {
+        "id": 7,
+        "image": "https://i.ibb.co/qsr38Zy/ms7.jpg",
+        "name": "Songwriting Workshop",
+        "instructor": "Robert Davis",
+        "available_seats": 7,
+        "price": 10
+    },
+    {
+        "id": 8,
+        "image": "https://i.ibb.co/MNsj32c/ms8.jpg",
+        "name": "Ukulele for Beginners",
+        "instructor": "Olivia Anderson",
+        "available_seats": 6,
+        "price": 17
+    },
+    {
+        "id": 9,
+        "image": "https://i.ibb.co/HDZ4Mc3/ms9.jpg",
+        "name": "Music Theory Essentials",
+        "instructor": "Jessica Miller",
+        "available_seats": 20,
+        "price": 20
+    },
+    {
+        "id": 10,
+        "image": "https://i.ibb.co/ZJGdyDH/ms10.jpg",
+        "name": "Electronic Music Production",
+        "instructor": "Daniel Wilson",
+        "available_seats": 10,
+        "price": 15
+    }
+]
