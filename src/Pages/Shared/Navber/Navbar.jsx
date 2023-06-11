@@ -1,24 +1,30 @@
 import React, { useContext } from 'react';
-import { FaArrowRight } from 'react-icons/fa';
-import {BsPersonCircle } from 'react-icons/bs';
+import { FaArrowRight, FaCartPlus } from 'react-icons/fa';
+import { BsPersonCircle } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
 
 
 const Navbar = () => {
-    const {user, logOut} = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
     const handleLogOut = () => {
         logOut()
-        .then(data => console.log(data))
-        .catch(err => console.log(err))
+            .then(data => console.log(data))
+            .catch(err => console.log(err))
     }
 
     const navMenu = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/instructor'>Instructor</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
-        <li><Link to='/dashboard'>DashBoard</Link></li>
+        <li><Link to='/'>
+            <button className="btn btn-sm">
+                <FaCartPlus></FaCartPlus>
+                <div className="badge badge-secondary">+0</div>
+            </button>
+        </Link></li>
+        {user && <li><Link to='/dashboard'>DashBoard</Link></li>}
     </>
 
     return (
@@ -45,7 +51,7 @@ const Navbar = () => {
                     {user ? <>
                         <button onClick={handleLogOut} className="btn btn-sm btn-active btn-neutral">LogOut</button>
                     </> : <>
-                    <Link to='/login' className="btn btn-active mr-4 btn-sm btn-neutral">Login <FaArrowRight></FaArrowRight> </Link>
+                        <Link to='/login' className="btn btn-active mr-4 btn-sm btn-neutral">Login <FaArrowRight></FaArrowRight> </Link>
                     </>}
                     <div className="avatar">
                         <div className="w-16 rounded">
