@@ -3,11 +3,13 @@ import { FaArrowRight } from 'react-icons/fa';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
+import UseCart from '../../hooks/UseCart';
 
 const SingleClass = ({ showClass }) => {
     const { user } = useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
+    const [, refetch] = UseCart();
     const { image, name, instructor, available_seats, price, _id } = showClass;
 
     const handleAddCart = showClass => {
@@ -25,6 +27,7 @@ const SingleClass = ({ showClass }) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.insertedId) {
+                        refetch()
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
