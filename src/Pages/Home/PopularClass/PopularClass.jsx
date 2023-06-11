@@ -5,7 +5,7 @@ const PopularClass = () => {
     const [classes, setClasses] = useState([])
     const limitClass = classes.slice(0,6)
     useEffect(() => {
-        fetch('class.json')
+        fetch('http://localhost:5000/classes')
         .then(res => res.json())
         .then(data => {
             setClasses(data)

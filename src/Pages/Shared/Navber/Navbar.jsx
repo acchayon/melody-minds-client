@@ -17,9 +17,8 @@ const Navbar = () => {
     const navMenu = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/instructor'>Instructor</Link></li>
-        <li><a>Classes</a></li>
+        <li><Link to='/classes'>Classes</Link></li>
         <li><Link to='/dashboard'>DashBoard</Link></li>
-
     </>
 
     return (
