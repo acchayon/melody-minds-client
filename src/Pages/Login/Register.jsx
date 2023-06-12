@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc'
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Provider/AuthProvider';
@@ -7,9 +7,21 @@ import Swal from 'sweetalert2';
 
 const Register = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile, googleSign } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
 
+    const from = location.state?.from?.pathname || '/';
+
+    // google sign
+    const handleGoogleSign = () => {
+        googleSign()
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+            navigate(from, {replace: true})
+        })
+    }
 
 
     const onSubmit = data => {
@@ -21,16 +33,28 @@ const Register = () => {
 
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        console.log('user info updated');
-                        reset();
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'update user successfully',
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                        navigate('/')
+                        const saveUserInfo = { name: data.name, email: data.email }
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUserInfo)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'update user successfully',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/')
+                                }
+                            })
                     })
                     .catch(error => {
                         console.log(error.message);
@@ -98,7 +122,7 @@ const Register = () => {
                     </form>
                     <div className='flex items-center'>
                         <p>Continue with</p>
-                        <button><FcGoogle size={40}></FcGoogle></button>
+                        <button onClick={handleGoogleSign}><FcGoogle size={40}></FcGoogle></button>
                     </div>
                 </div>
             </div>

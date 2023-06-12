@@ -7,11 +7,22 @@ import Swal from 'sweetalert2';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const {signIN} = useContext(AuthContext);
+    const {signIN, googleSign} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
 
     const from = location.state?.from?.pathname || '/';
+
+
+    // google sign
+    const handleGoogleSign = () => {
+        googleSign()
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+            navigate(from, {replace: true})
+        })
+    }
 
     const onSubmit = data => {
         console.log(data)
@@ -31,22 +42,6 @@ const Login = () => {
         })
     };
 
-    // const handleLogin = (event) => {
-    //     event.preventDefault();
-
-    //     const form = event.target;
-    //     const email = form.email.value;
-    //     const password = form.password.value;
-    //     console.log(email, password);
-
-
-    //     // sign in
-    //     signIN(email, password)
-    //     .then(result => {
-    //         const loggedUser = result.user;
-    //         console.log(loggedUser);
-    //     })
-    // }
 
     return (
         <div className='w-3/5 mx-auto'>
@@ -80,7 +75,7 @@ const Login = () => {
                     </form>
                     <div className='flex items-center'>
                         <p><small>Continue with</small></p>
-                        <button><FcGoogle size={40}></FcGoogle></button>
+                        <button onClick={handleGoogleSign}><FcGoogle size={40}></FcGoogle></button>
                     </div>
                 </div>
             </div>
