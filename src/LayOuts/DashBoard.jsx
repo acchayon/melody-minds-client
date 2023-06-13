@@ -6,6 +6,7 @@ import useAdmin from '../hooks/useAdmin';
 import { useSpring, animated } from 'react-spring';
 
 
+
 const DashBoard = () => {
     const animationProps = useSpring({
         opacity: 1,
@@ -42,6 +43,8 @@ const DashBoard = () => {
 
                                 <li><NavLink to='/dashboard/adminhome'><FaHome></FaHome> Admin Home</NavLink></li>
                                 <li><NavLink to='/dashboard/addclass'><FaCalendarTimes></FaCalendarTimes> Add Class</NavLink></li>
+                                <li><NavLink to='/dashboard/manageclasses'>
+                                <FaCalendarTimes></FaCalendarTimes> Manage Classes</NavLink></li>
                                 <li><NavLink to='/dashboard/payment'><FaWallet></FaWallet> Payment History</NavLink></li>
                                 <li><NavLink to='/dashboard/allusers'><FaUser></FaUser> All Users</NavLink></li>
                             </> : <>
