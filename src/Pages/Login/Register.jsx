@@ -16,11 +16,24 @@ const Register = () => {
     // google sign
     const handleGoogleSign = () => {
         googleSign()
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            navigate(from, {replace: true})
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                const saveUserInfo = { name: loggedUser.displayName, email: loggedUser.email }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUserInfo)
+                })
+                    .then(res => res.json())
+                    .then(() => {
+                        navigate(from, { replace: true })
+
+                    })
+
+            })
     }
 
 

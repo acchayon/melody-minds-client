@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const {signIN, googleSign} = useContext(AuthContext);
+    const { signIN, googleSign } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -17,29 +17,42 @@ const Login = () => {
     // google sign
     const handleGoogleSign = () => {
         googleSign()
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            navigate(from, {replace: true})
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                const saveUserInfo = { name: loggedUser.displayName, email: loggedUser.email }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUserInfo)
+                })
+                    .then(res => res.json())
+                    .then(() => {
+                        navigate(from, { replace: true })
+                    }
+                    )
+
+            })
     }
 
     const onSubmit = data => {
         console.log(data)
 
         signIN(data.email, data.password)
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: ' user login successfully',
-                showConfirmButton: false,
-                timer: 1500
-              });
-              navigate(from, {replace: true})
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: ' user login successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate(from, { replace: true })
+            })
     };
 
 
