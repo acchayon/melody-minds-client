@@ -2,10 +2,13 @@ import React from 'react';
 import { FaCalendarTimes, FaHome, FaRestroom, FaShoppingCart, FaUser, FaWallet } from 'react-icons/fa';
 import { NavLink, Outlet } from 'react-router-dom';
 import UseCart from '../hooks/UseCart';
+import useAdmin from '../hooks/useAdmin';
 
 const DashBoard = () => {
     const [cart] = UseCart();
-    const isAdmin = true;
+    // const isAdmin = true;
+
+    const [isAdmin] = useAdmin();
 
     return (
         <div className="drawer lg:drawer-open">
@@ -23,7 +26,7 @@ const DashBoard = () => {
                         isAdmin ? <>
 
                             <li><NavLink to='/dashboard/adminhome'><FaHome></FaHome> Admin Home</NavLink></li>
-                            <li><NavLink to='/dashboard/reservation'><FaCalendarTimes></FaCalendarTimes> Add Class</NavLink></li>
+                            <li><NavLink to='/dashboard/addclass'><FaCalendarTimes></FaCalendarTimes> Add Class</NavLink></li>
                             <li><NavLink to='/dashboard/payment'><FaWallet></FaWallet> Payment History</NavLink></li>
                             <li><NavLink to='/dashboard/allusers'><FaUser></FaUser> All Users</NavLink></li>
                         </> : <>
