@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import useAxiosSecure from '../../hooks/UseAxiosSecure';
+import Swal from 'sweetalert2';
 
 const hosting_img_token = import.meta.env.VITE_IMAGE_TOKEN;
 const AddClass = () => {
@@ -8,28 +9,37 @@ const AddClass = () => {
     const { register, handleSubmit } = useForm();
 
     const img_host_url = `https://api.imgbb.com/1/upload?key=${hosting_img_token}`
-    const onSubmit = data =>{
+    const onSubmit = data => {
         const formData = new FormData();
         formData.append('image', data.image[0])
         fetch(img_host_url, {
             method: 'POST',
             body: formData
         })
-        .then(res => res.json())
-        .then(responseImg => {
-            if(responseImg.success){
-                const imgUrl = responseImg.data.display_url;
-                const { name, instructor, available_seats, price} = data;
-                const classItem = {name, price: parseFloat(price), instructor, available_seats, image: imgUrl}
-                console.log(classItem);
+            .then(res => res.json())
+            .then(responseImg => {
+                if (responseImg.success) {
+                    const imgUrl = responseImg.data.display_url;
+                    const { name, instructor, available_seats, price } = data;
+                    const classItem = { name, price: parseFloat(price), instructor, available_seats, image: imgUrl }
+                    console.log(classItem);
 
-                axiosSecure.post('/classes', classItem)
-                .then(data => {
-                    console.log('after posting new class', data.data);
-                })
-            }
-        })
-        };
+                    axiosSecure.post('/classes', classItem)
+                        .then(data => {
+                            console.log('after posting new class', data.data);
+                            if (data.data.insertedId) {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'New Class added successfully',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
+                        })
+                }
+            })
+    };
 
     return (
         <div className='w-4/6 mx-auto'>
