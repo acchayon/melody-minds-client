@@ -13,6 +13,7 @@ import AllUsers from "../LayOuts/AllUsers";
 import AddClass from "../Pages/DashBoard/AddClass";
 import AdminRoute from "./AdminRoute";
 import ManageClass from "../Pages/DashBoard/ManageClass";
+import Payment from "../Pages/DashBoard/Payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
                 element: <MyCart></MyCart>
             },
             {
+                path: 'payment',
+                element: <Payment></Payment>
+            },
+            {
                 path: 'addclass',
                 element: <AdminRoute><AddClass></AddClass></AdminRoute>
             },
@@ -55,7 +60,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'allusers',
-                element: <AllUsers></AllUsers>
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
             }
         ]
     },
