@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import useAxiosSecure from '../../hooks/UseAxiosSecure';
 import { AuthContext } from '../../Provider/AuthProvider';
 
-const CheckOutForm = ({ price }) => {
+const CheckOutForm = ({ price, cart }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [axiosSecure] = useAxiosSecure();
@@ -14,12 +14,14 @@ const CheckOutForm = ({ price }) => {
     const [transactionId, setTransactionId] = useState('')
 
     useEffect(() => {
-        axiosSecure.post('/create-payment-intent', { price })
-            .then(res => {
-                console.log(res.data.clientSecret);
-                setClientSecret(res.data.clientSecret)
-            })
-    }, [])
+        if (price > 0) {
+            axiosSecure.post('/create-payment-intent', { price })
+                .then(res => {
+                    console.log(res.data.clientSecret);
+                    setClientSecret(res.data.clientSecret)
+                })
+        }
+    }, [price, axiosSecure])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -42,7 +44,7 @@ const CheckOutForm = ({ price }) => {
         else {
             console.log('payment: ', paymentMethod);
             setCardError('')
-            
+
         }
 
         setProcessing(true)
@@ -65,9 +67,30 @@ const CheckOutForm = ({ price }) => {
         console.log('payment intent', paymentIntent);
 
         setProcessing(false)
-        if(paymentIntent.status === 'succeeded'){
+        if (paymentIntent.status === 'succeeded') {
             setTransactionId(paymentIntent.id)
             const transactionId = paymentIntent.id;
+
+            // here save payment info
+
+            const payment = {
+                email: user?.email,
+                transactionId: paymentIntent.id,
+                price,
+                quantity: cart.length,
+                date: new Date(),
+                status: 'service pending',
+                cartItems: cart.map(item => item._id),
+                classItems: cart.map(item => item.classId),
+                itemName: cart.map(item => item.name)
+            }
+            axiosSecure.post('/payments', payment)
+                .then(res => {
+                    console.log(res.data);
+                    if (res.data.result.insertedId) {
+
+                    }
+                })
         }
     }
 

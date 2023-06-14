@@ -5,7 +5,7 @@ const ShowClasses = () => {
     const [showClasses, setShowClasses] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch('https://melody-minds-server-acchayon.vercel.app/classes')
         .then(res => res.json())
         .then(data => {
             setShowClasses(data)

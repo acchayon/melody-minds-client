@@ -5,7 +5,7 @@ const useMenu = () => {
     const {data: classes = [], isLoading: loading, refetch} = useQuery({
         queryKey: ['menu'],
         queryFn: async() => {
-            const res = await fetch('http://localhost:5000/classes');
+            const res = await fetch('https://melody-minds-server-acchayon.vercel.app/classes');
             return res.json();
         }
     })
@@ -22,7 +22,7 @@ export default useMenu;
 // const [menu, setMenu] = useState([]);
     // const [loading, setLoading] = useState(true);
     // useEffect(() => {
-    //     fetch('http://localhost:5000/menu')
+    //     fetch('https://melody-minds-server-acchayon.vercel.app/menu')
     //         .then(res => res.json())
     //         .then(data => {
     //             setMenu(data);

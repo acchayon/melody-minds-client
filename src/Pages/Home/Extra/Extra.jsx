@@ -10,22 +10,22 @@ const Extra = () => {
             <div>
                 <SiGoogleclassroom size={40}></SiGoogleclassroom>
                 <h3 className='text-2xl font-bold mt-4'>Luxury Class</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, porro nobis. Aliquid quasi delectus ratione!</p>
+                <p>In a realm of sophistication and prestige, luxury school classes provide an opulent and refined education experience for privileged learners.</p>
             </div>
             <div>
                 <FaFlagCheckered size={40}></FaFlagCheckered>
                 <h3 className='text-2xl mt-4 font-bold'>New Instruments</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, porro nobis. Aliquid quasi delectus ratione!</p>
+                <p>Introducing our school's latest collection of cutting-edge instruments, designed to ignite creativity and elevate musical experiences for students.</p>
             </div>
             <div>
                 <BsFilePersonFill size={40}></BsFilePersonFill>
                 <h3 className='text-2xl mt-4 font-bold'>Professionals</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, porro nobis. Aliquid quasi delectus ratione!</p>
+                <p>Our school boasts a team of highly skilled and experienced professionals dedicated to nurturing students' talents and guiding them towards success.</p>
             </div>
             <div>
                 <FaAward size={40}></FaAward>
                 <h3 className='text-2xl mt-4 font-bold'>Award Winning</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, porro nobis. Aliquid quasi delectus ratione!</p>
+                <p>Recognized for excellence, our school has been the recipient of numerous prestigious awards, celebrating our commitment to providing an exceptional educational experience.</p>
             </div>
         </div>
     );

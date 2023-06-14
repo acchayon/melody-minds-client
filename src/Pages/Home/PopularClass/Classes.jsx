@@ -14,9 +14,9 @@ const Classes = ({ oneClass }) => {
                 <p>Instructor Name: {instructor}</p>
                 <p>Price: ${price}</p>
                 <p>Available Seats: {available_seats}</p>
-                <div className="card-actions">
+                {/* <div className="card-actions">
                     <button className="btn btn-neutral btn-outline border-1 btn-sm">Select <FaArrowRight></FaArrowRight> </button>
-                </div>
+                </div> */}
             </div>
         </div>
     );

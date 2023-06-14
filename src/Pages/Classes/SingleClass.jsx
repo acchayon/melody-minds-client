@@ -17,7 +17,7 @@ const SingleClass = ({ showClass }) => {
 
         if (user && user?.email) {
             const orderClass = { classId: _id, image, name, instructor, available_seats, price, email: user?.email }
-            fetch('http://localhost:5000/carts', {
+            fetch('https://melody-minds-server-acchayon.vercel.app/carts', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

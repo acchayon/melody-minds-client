@@ -3,14 +3,14 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 
+
+const axiosSecure = axios.create({
+    baseURL: 'https://melody-minds-server-acchayon.vercel.app',
+});
+
 const useAxiosSecure = () => {
     const { logOut } = useContext(AuthContext);
     const navigate = useNavigate();
-    
-
-    const axiosSecure = axios.create({
-        baseURL: 'http://localhost:5000',
-    });
 
     useEffect(() => {
         axiosSecure.interceptors.request.use((config) => {
@@ -37,7 +37,7 @@ const useAxiosSecure = () => {
             axiosSecure.interceptors.request.eject();
             axiosSecure.interceptors.response.eject();
         };
-    }, [axiosSecure, logOut, navigate]);
+    }, [ logOut, navigate]);
 
     return [axiosSecure]; // Return the modified Axios instance
 };

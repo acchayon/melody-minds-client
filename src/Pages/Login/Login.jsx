@@ -21,7 +21,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 const saveUserInfo = { name: loggedUser.displayName, email: loggedUser.email }
-                fetch('http://localhost:5000/users', {
+                fetch('https://melody-minds-server-acchayon.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

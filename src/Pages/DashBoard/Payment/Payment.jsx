@@ -18,7 +18,7 @@ const Payment = () => {
                 <h3 className='text-center mx-auto'><FaCcStripe size={50}></FaCcStripe></h3>
             </div>
             <Elements stripe={stripePromise}>
-                <CheckOutForm price={price}></CheckOutForm>
+                <CheckOutForm price={price} cart={cart}></CheckOutForm>
             </Elements>
         </div>
     );

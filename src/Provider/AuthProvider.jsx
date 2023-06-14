@@ -51,7 +51,7 @@ const AuthProvider = ({ children }) => {
 
             // get set token here
             if (currentUser) {
-                axios.post('http://localhost:5000/jwt', { email: currentUser.email })
+                axios.post('https://melody-minds-server-acchayon.vercel.app/jwt', { email: currentUser.email })
                 .then(data => {
                     localStorage.setItem('access-web-token', data.data.token)
                     setLoading(false)
